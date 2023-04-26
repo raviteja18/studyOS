@@ -1,0 +1,6 @@
+dependencies
+
+sudo apt update
+sudo apt install nasm
+
+sudo apt install qemu-system-x86
