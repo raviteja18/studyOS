@@ -1,0 +1,32 @@
+* Interrupt Descriptor Table
+  
+  | Name     | Bit     | Known as           | Descrition               |
+  | Offset   | 46 - 63 | Offset 16 - 31     | The Higher part of       |
+  |          |         |                    | offset to execute        |
+  |          |         |                    |                          |
+  | P        | 47      | Present            | This should be set       |
+  |          |         |                    | to zero for unused       |
+  |          |         |                    | interrupts               |
+  |          |         |                    |                          |
+  | DPL      | 45 - 46 | Descriptor privela | The ring level the       |
+  |          |         | level              | the processor requires   |
+  |          |         |                    | to call this interrupt   |
+  |          |         |                    |                          |
+  | S        | 44      | Storage segment    | Should be set to zero    |
+  |          |         |                    | for trap gates           |
+  |          |         |                    |                          |
+  | Type     | 40 - 43 | Gate type          | The type of gate this    |
+  |          |         |                    | interrupt treated as     |
+  |          |         |                    |                          |
+  | 0        | 32 - 39 | Unused             | Unused bits in this      |
+  |          |         |                    | structure                |
+  |          |         |                    |                          |
+  | selector | 16 - 31 | Selector 0 - 15    | The selector this        |
+  |          |         |                    | interrupt is bounded to  |
+  |          |         |                    | i.e the kernel code      |
+  |          |         |                    | selector                 |
+  |          |         |                    |                          |
+  | offset   | 0 - 15  | Offset 0 -15       | The lower part of offset |
+  |          |         |                    |                          |
+
+* Understanding the heap and memory allocation.
