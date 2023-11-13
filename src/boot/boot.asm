@@ -6,7 +6,7 @@ DATA_SEG equ gdt_data - gdt_start
 _start:
 	jmp short start
 	nop
-times 33 db 0
+times 33 db 0 			;BIOS  parameter block
 start:
 	jmp 0:step2		;sets codesegment register to 0x7c0
 	;; instruction pointer points to 0x7c0*16+step2
@@ -14,14 +14,14 @@ start:
 
 step2:	
 	cli			;clear interrupt flags
-	mov ax, 0
-	mov ds, ax
-	mov es, ax
-	mov ss, ax
-	mov sp, 0x7c00
+	mov ax, 0		;ax register
+	mov ds, ax		;data segment
+	mov es, ax		;extra segment
+	mov ss, ax		;stack segment
+	mov sp, 0x7c00		;stack pointer
 	sti            		;Enable interrupts
 .load_protected:
-	cli
+	cli			;Clear interrupts
 	lgdt[gdt_descriptor]
 	mov eax, cr0
 	or eax, 0x1
@@ -54,6 +54,7 @@ gdt_descriptor:
 
 BITS 32
 load32:
+	jmp $
 	mov eax, 1		;load the first sector from storage medium.
 	mov ecx, 100		;total number of sectors to read
 	mov edi, 0x0100000	;load the data at the address 0x0100000
@@ -108,3 +109,4 @@ times 510 - ($ -$$) db 0
 dw 0xAA55  			;dw means define word in memory.
  				;db means define byte in memory
 				;dd means define double word in memory	
+;;; lodsb uses DS:SI combination 16*DS + SI

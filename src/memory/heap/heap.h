@@ -13,6 +13,7 @@
 
 typedef unsigned char HEAP_BLOCK_TABLE_ENTRY;
 
+/* Theres is an entry for each heap block */
 struct heap_table{
   HEAP_BLOCK_TABLE_ENTRY *entries;
   size_t total;

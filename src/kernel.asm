@@ -29,7 +29,8 @@ _start:
 	out 0x21, al
 	;; end remap of the master PIC
 	;; Renable the interrupts
-	sti
+	;; Bad place to enable the interrupts. Place it after idt_init()
+	;; sti	
 	call kernel_main
 	jmp $
 

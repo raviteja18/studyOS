@@ -1,3 +1,8 @@
+* Booting process
+#+DOWNLOADED: https://manybutfinite.com/img/boot/bootProcess.png @ 2023-05-02 08:18:48
+    [[file:org_data/2023-05-02_08-18-48_bootProcess.png]]
+
+
 * Interrupt Descriptor Table
   
   | Name     | Bit     | Known as           | Descrition               |
@@ -30,3 +35,5 @@
   |          |         |                    |                          |
 
 * Understanding the heap and memory allocation.
+  - Heap is the memory bank of an operating system. This is the place from
+    where the memory gets allocated on request.
